@@ -15,6 +15,9 @@ if ($connection->connect_error) {
     echo "Database connection error: " . $connection->connect_error;
 } 
 
-$query = "SELECT * FROM data_karyawan";
+$data_karyawan = "SELECT data_karyawan. *, position.position FROM data_karyawan
+                    INNER JOIN position on data_karyawan.id_position = position.id";
+
+$data_position = "SELECT * FROM position";
 
 ?>

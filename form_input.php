@@ -24,8 +24,22 @@
                         <input type="number" class="form-control" name="nik" id="inputEmail4" placeholder="nomer induk karyawan">
                     </div>
                     <div class="col-md-12">
-                        <label for="Nama" class="form-label">Job </label>
-                        <input type="text" class="form-control" name="job" id="inputEmail4" placeholder="">
+                        <label for="Nama" class="form-label">Position </label>
+                        <select class="form-control" id="posisi" name="id_position">
+                            <?php 
+                                include 'config/database.php';
+                                $data_position = $connection->query($data_position);
+                                
+                                if($data_position-> num_rows > 0){
+                                    foreach($data_position as $position){
+                            ?>
+                            <option value="<?php echo $position['id'] ?>"><?php echo $position['position'] ?></option>
+                        
+                           <?php 
+                                }
+                            }
+                           ?>
+                        </select>
                     </div>
                     
                     

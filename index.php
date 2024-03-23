@@ -37,7 +37,7 @@ include 'config/database.php';
                     <tbody>
                         <?php
                         $no = 1;
-                        $result = $connection->query($query);
+                        $result = $connection->query($data_karyawan);
 
                         if ($result->num_rows > 0) {
                             foreach ($result as $data) {
@@ -53,7 +53,7 @@ include 'config/database.php';
                                         <?php echo $data['nik']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $data['job']; ?>
+                                        <?php echo $data['position']; ?>
                                     </td>
                                     <td>
                                         <div class="d-flex gap-3">

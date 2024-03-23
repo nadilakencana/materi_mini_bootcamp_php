@@ -17,7 +17,8 @@
             <?php 
                 include 'config/database.php';
                 $id = $_GET['id'];
-                $data = mysqli_query($connection,"select * from data_karyawan where id='$id'");
+                $data = mysqli_query($connection,"SELECT data_karyawan. *, position.position FROM data_karyawan
+                    INNER JOIN position on data_karyawan.id_position = position.id where data_karyawan.id='$id'");
                 $row = mysqli_fetch_assoc($data);
             ?>
                 <form class="row g-3" method="post" action="config/update.php">
@@ -32,7 +33,23 @@
                     </div>
                     <div class="col-md-12">
                         <label for="Nama" class="form-label">Job </label>
-                        <input type="text" class="form-control" name="job" value="<?php echo $row['job'] ?>" id="inputEmail4" placeholder="">
+                        <label for="Nama" class="form-label">Position </label>
+                        <select class="form-control" id="posisi" name="id_position">
+                             <option value="<?php echo $row['id_position'] ?>" selected><?php echo $row['position'] ?></option>
+                             <option >--pilih position--</option>
+                            <?php 
+                                $data_position = $connection->query($data_position);
+                                
+                                if($data_position-> num_rows > 0){
+                                    foreach($data_position as $position){
+                            ?>
+                            <option value="<?php echo $position['id'] ?>"><?php echo $position['position'] ?></option>
+                        
+                           <?php 
+                                }
+                            }
+                           ?>
+                        </select>
                     </div>
                     
                     
